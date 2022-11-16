@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+      <section className="margin-section">
         {button === 'hide' && <Button onClick={showButton}> Add New Food </Button> }
         {button === 'show' && 
           <div>
@@ -66,6 +67,7 @@ function App() {
           }
         <Search searchHandler={filterSearchHandler}/>
         <Divider>Food List</Divider>
+      </section>
         {foods.length !== 0 && 
           <Row style={{ width: '100%', justifyContent: 'center' }}>
           {foods.map((foodItem, index) => {
