@@ -3,15 +3,22 @@ import foodsData from './foods.json';
 import React, { useState } from "react";
 import FoodBox from './components/FoodBox';
 import { Row, Divider, Button } from 'antd';
+import AddFoodForm from './components/AddFoodForm';
 
 
 function App() {
 
   const [foods, setFood] = useState(foodsData)
 
+  const addFoodHandler = (newFoodItem) => {
+      setFood((prevState) => {
+      return [...prevState, newFoodItem]
+    })
+  }
+
   return (
     <div className="App">
-        {/* Display Add Food component here */}
+        <AddFoodForm onNewFoodItem={addFoodHandler}/>
 
         <Button> Hide Form / Add New Food </Button>
 
