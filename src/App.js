@@ -5,6 +5,7 @@ import FoodBox from './components/FoodBox';
 import { Row, Divider, Button } from 'antd';
 import AddFoodForm from './components/AddFoodForm';
 import Search from './components/Search';
+import Default from './components/Default';
 
 
 function App() {
@@ -65,7 +66,8 @@ function App() {
           }
         <Search searchHandler={filterSearchHandler}/>
         <Divider>Food List</Divider>
-        <Row style={{ width: '100%', justifyContent: 'center' }}>
+        {foods.length !== 0 && 
+          <Row style={{ width: '100%', justifyContent: 'center' }}>
           {foods.map((foodItem, index) => {
             return (
               <FoodBox
@@ -77,6 +79,9 @@ function App() {
             })
           }
         </Row>
+        }
+        {foods.length === 0 && <Default/>}
+        
       
     </div>
   );
