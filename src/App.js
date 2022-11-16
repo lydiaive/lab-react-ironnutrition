@@ -25,7 +25,18 @@ function App() {
       setFood(newArr)
   } 
 
-/*   const filterSearchHandler = (searchTerm) => {
+    const deleteFootItem = (foodItemName) => {
+      console.log(foodItemName)
+      const newArr = foods.filter(foodItem => {
+        return foodItem.name !== foodItemName
+      })
+      setFood(newArr)
+  } 
+  
+
+/*   Attemt to search for new creates Foods as well:
+
+    const filterSearchHandler = (searchTerm) => {
     if (searchTerm === '') {
       setFood(foodsData)
     } else {
@@ -41,7 +52,7 @@ function App() {
     <div className="App">
         <AddFoodForm onNewFoodItem={addFoodHandler}/>
         <Button> Hide Form / Add New Food </Button>
-        <Search onSearch={filterSearchHandler}/>
+        <Search searchHandler={filterSearchHandler}/>
         <Divider>Food List</Divider>
         <Row style={{ width: '100%', justifyContent: 'center' }}>
           {foods.map((foodItem, index) => {
@@ -49,6 +60,7 @@ function App() {
               <FoodBox
                 food = {foodItem}
                 key = {index}
+                deleteHandler={deleteFootItem}
               />
               )
             })
