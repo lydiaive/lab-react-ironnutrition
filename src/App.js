@@ -26,7 +26,6 @@ function App() {
   }
 
    const filterSearchHandler = (searchTerm) => {
-      console.log(searchTerm)
       const newArr = [...foodsData].filter(foodItem =>  {
         return foodItem.name.toLowerCase().includes(searchTerm)
       })
@@ -34,7 +33,6 @@ function App() {
   } 
 
     const deleteFootItem = (foodItemName) => {
-      console.log(foodItemName)
       const newArr = foods.filter(foodItem => {
         return foodItem.name !== foodItemName
       })
