@@ -10,6 +10,14 @@ import Search from './components/Search';
 function App() {
 
   const [foods, setFood] = useState(foodsData)
+  const [button, setButton] = useState('hide')
+
+  const showButton = () => {
+    setButton('show')
+  }
+  const hideButton = () => {
+    setButton('hide')
+  }
 
   const addFoodHandler = (newFoodItem) => {
       setFood((prevState) => {
@@ -50,8 +58,13 @@ function App() {
 
   return (
     <div className="App">
-        <AddFoodForm onNewFoodItem={addFoodHandler}/>
-        <Button> Hide Form / Add New Food </Button>
+        {button === 'hide' && <Button onClick={showButton}> Add New Food </Button> }
+        {button === 'show' && 
+          <div>
+            <AddFoodForm onNewFoodItem={addFoodHandler}/> 
+            <Button onClick={hideButton}> Hide Form </Button>
+          </div>
+          }
         <Search searchHandler={filterSearchHandler}/>
         <Divider>Food List</Divider>
         <Row style={{ width: '100%', justifyContent: 'center' }}>
